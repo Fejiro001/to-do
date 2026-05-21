@@ -1,11 +1,15 @@
 import CreateTask from "./components/CreateTask";
 import Header from "./components/Header";
+import TaskList from "./components/TaskList";
 
 function App() {
   return (
     <>
       <Header />
-      <CreateTask />
+      <main>
+        <CreateTask />
+        <TaskList />
+      </main>
     </>
   );
 }

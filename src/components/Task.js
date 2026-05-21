@@ -1,4 +1,4 @@
-import { FaCheckCircle, FaTrash, FaPencil } from "react-icons/fa";
+import { FaCheckCircle, FaTrash, FaPencilAlt } from "react-icons/fa";
 
 function Task() {
   return (
@@ -11,7 +11,7 @@ function Task() {
           <FaCheckCircle />
         </li>
         <li>
-          <FaPencil />
+          <FaPencilAlt />
         </li>
         <li>
           <FaTrash />
