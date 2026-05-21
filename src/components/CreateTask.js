@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
 
-function CreateTask() {
+function CreateTask(prop) {
   return (
     <form className="create-task-form">
       <input type="text" placeholder="What needs to be done?" />
