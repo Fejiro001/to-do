@@ -1,30 +1,40 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import CreateTask from "./components/CreateTask";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 
-const tasksReducer = (state, action) => {
+const tasksReducer = (tasks, action) => {
   switch (action.type) {
     case "CREATE":
-      const newState = [...state, action.payload];
-      localStorage.setItem("my-tasks", JSON.stringify(newState));
-      return newState;
+      return [...tasks, action.payload];
     case "EDIT":
-      return;
+      return tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          return action.payload;
+        }
+        return task;
+      });
     case "COMPLETE":
       return;
     case "DELETE":
       return;
     default:
-      return state;
+      return tasks;
   }
 };
 
 function App() {
-  const [tasks, dispatch] = useReducer(tasksReducer, []);
+  const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
+  const [tasks, dispatch] = useReducer(tasksReducer, [], () => {
+    return localTasks;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("my-tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const createTask = (text) => {
-    const index = tasks.length ? tasks[tasks.length - 1].index + 1 : 0;
+    const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
     const date = new Date().toLocaleString({
       year: "numeric",
       month: "short",
@@ -33,15 +43,22 @@ function App() {
       minute: "2-digit"
     });
     const isCompleted = false;
-    const newTask = { index, text, date, isCompleted };
+    const newTask = { id, text, date, isCompleted };
     dispatch({ type: "CREATE", payload: newTask });
   };
 
-  const editTask = () => {
-    // TODO: Implement edit task functionality
+  const editTask = (task) => {
+    const date = new Date().toLocaleString({
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+    dispatch({ type: "EDIT", payload: { ...task, date } });
   };
 
-  const completeTask = () => {
+  const completeTask = (task) => {
     // TODO: Implement complete task functionality
   };
 
