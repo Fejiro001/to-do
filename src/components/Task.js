@@ -3,17 +3,17 @@ import { FaCheckCircle, FaTrash, FaPencilAlt } from "react-icons/fa";
 function Task() {
   return (
     <>
-      <h2>Current task</h2>
-      <p>Current date and time</p>
+      <h2 className="task-title">Current task</h2>
+      <p className="task-date">Current date and time</p>
       <hr />
       <ul className="task-actions">
-        <li>
+        <li className="complete" title="Complete Task">
           <FaCheckCircle />
         </li>
-        <li>
+        <li className="edit" title="Edit Task">
           <FaPencilAlt />
         </li>
-        <li>
+        <li className="delete" title="Delete Task">
           <FaTrash />
         </li>
       </ul>

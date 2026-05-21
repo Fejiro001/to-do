@@ -4,7 +4,7 @@ function TaskList() {
   return (
     <section className="task-section">
       <ul className="task-list">
-        <li className="task-list-items">
+        <li className="task-list-item">
           <Task />
         </li>
       </ul>
