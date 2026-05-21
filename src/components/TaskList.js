@@ -8,6 +8,7 @@ function TaskList() {
           <Task />
         </li>
       </ul>
+      {/* If no tasks. I will display: No tasks yet. Add a task above to get started. */}
     </section>
   );
 }

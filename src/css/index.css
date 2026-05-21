@@ -1,1 +1,55 @@
 @import "./reset.css";
+
+:root {
+  /* Colors */
+  --primary-color: #7c3bed;
+  --secondary-color: #0f0e15;
+  --muted-color: #857e7d;
+  --completed-color: #22c55e;
+  --delete-color: #ef4444;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Font Families */
+  --heading-font: "Space Grotesk", sans-serif;
+  --body-font: "Plus Jakarta Sans", sans-serif;
+
+  /* Font Sizes */
+  --fs-xl: 4.8rem;
+  --fs-lg: 3.6rem;
+  --fs-md: 2.4rem;
+  --fs-base: 1.6rem;
+  --fs-sm: 1.4rem;
+
+  /* Layout */
+  --max-width: 1240px;
+  --container-padding: 20px;
+  --section-padding: 100px 0;
+
+  /* UI */
+  --radius: 5px;
+  --transition: all 0.3s ease;
+}
+
+.container {
+  max-width: min(100% - 30px, var(--max-width));
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font);
+}
+
+p,
+li,
+a,
+button {
+  font-family: var(--body-font);
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
