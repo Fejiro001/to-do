@@ -4,7 +4,7 @@
   /* Colors */
   --primary-color: #7c3bed;
   --secondary-color: #0f0e15;
-  --muted-color: #857e7d;
+  --muted-color: #6b677e;
   --completed-color: #22c55e;
   --delete-color: #ef4444;
   --white: #ffffff;
@@ -53,3 +53,39 @@ body {
   background-color: var(--secondary-color);
   color: var(--white);
 }
+
+/* HEADER */
+header {
+  border-bottom: 1px solid var(--muted-color);
+}
+
+.header-container {
+  height: 8rem;
+  gap: 1.5rem;
+}
+
+.header-container,
+.task-count {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 40px;
+}
+
+.app-title {
+  font-size: var(--fs-md);
+}
+
+.task-count {
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--muted-color);
+}
+
+/* FORM */
+
+/* TASK */
+
