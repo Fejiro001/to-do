@@ -33,8 +33,7 @@ function App() {
     localStorage.setItem("my-tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  const createTask = (text) => {
-    const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
+  const createNewDate = () => {
     const date = new Date().toLocaleString({
       year: "numeric",
       month: "short",
@@ -42,20 +41,20 @@ function App() {
       hour: "2-digit",
       minute: "2-digit"
     });
+    return date;
+  };
+
+  const createTask = (text) => {
+    const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
+    const date = createNewDate();
     const isCompleted = false;
     const newTask = { id, text, date, isCompleted };
     dispatch({ type: "CREATE", payload: newTask });
   };
 
   const editTask = (task) => {
-    const date = new Date().toLocaleString({
-      year: "numeric",
-      month: "short",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-    dispatch({ type: "EDIT", payload: { ...task, date } });
+    const newDate = createNewDate();
+    dispatch({ type: "EDIT", payload: { ...task, date: newDate } });
   };
 
   const completeTask = (task) => {
