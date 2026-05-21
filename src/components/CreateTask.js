@@ -1,15 +1,20 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
 function CreateTask(props) {
+  const { createTask, inputRef } = props;
+  const [isEmpty, setEmpty] = useState(true);
+
   return (
-    <form onSubmit={props.createTask} className="create-task-form">
+    <form onSubmit={createTask} className="create-task-form">
       <input
-        ref={props.inputRef}
+        ref={inputRef}
         name="newTask"
         type="text"
         placeholder="What needs to be done?"
+        onChange={(e) => setEmpty(e.target.value.trim() === "")}
       />
-      <button className="primary-button" type="submit">
+      <button className="primary-button" type="submit" disabled={isEmpty}>
         <FaPlus />
         Add
       </button>
