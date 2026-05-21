@@ -2,9 +2,9 @@ import Task from "./Task";
 
 function TaskList() {
   return (
-    <section>
-      <ul>
-        <li>
+    <section className="task-section">
+      <ul className="task-list">
+        <li className="task-list-items">
           <Task />
         </li>
       </ul>

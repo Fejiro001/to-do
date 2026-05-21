@@ -50,6 +50,10 @@ button {
   font-family: var(--body-font);
 }
 
+li {
+  list-style: none;
+}
+
 body {
   background-color: var(--secondary-color);
   color: var(--white);
@@ -86,7 +90,7 @@ header {
   color: var(--muted-color);
 }
 
-main {
+.main-content {
   padding: var(--section-padding);
   display: flex;
   flex-direction: column;
@@ -135,4 +139,27 @@ main {
 }
 
 /* TASK */
+.task-section {
+  width: 100%;
+}
+
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .task-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .task-list {
+    grid-template-columns: 1fr;
+  }
+}
 

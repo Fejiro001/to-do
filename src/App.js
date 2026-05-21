@@ -7,8 +7,10 @@ function App() {
     <>
       <Header />
       <main>
-        <CreateTask />
-        <TaskList />
+        <div className="container main-content">
+          <CreateTask />
+          <TaskList />
+        </div>
       </main>
     </>
   );
