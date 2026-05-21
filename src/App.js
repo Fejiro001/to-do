@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import CreateTask from "./components/CreateTask";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
@@ -28,6 +28,7 @@ function App() {
   const [tasks, dispatch] = useReducer(tasksReducer, [], () => {
     return localTasks;
   });
+  const inputRef = useRef("");
 
   useEffect(() => {
     localStorage.setItem("my-tasks", JSON.stringify(tasks));
@@ -44,12 +45,20 @@ function App() {
     return date;
   };
 
-  const createTask = (text) => {
-    const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
-    const date = createNewDate();
-    const isCompleted = false;
-    const newTask = { id, text, date, isCompleted };
-    dispatch({ type: "CREATE", payload: newTask });
+  const createTask = (e) => {
+    e.preventDefault();
+    const text = inputRef.current.value;
+
+    if (text !== "") {
+      const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
+      const date = createNewDate();
+      const isCompleted = false;
+      const newTask = { id, text, date, isCompleted };
+      dispatch({ type: "CREATE", payload: newTask });
+    }
+
+    // Clear the input
+    inputRef.current.value = "";
   };
 
   const editTask = (task) => {
@@ -70,7 +79,7 @@ function App() {
       <Header />
       <main>
         <div className="container main-content">
-          <CreateTask createTask={createTask} />
+          <CreateTask inputRef={inputRef} createTask={createTask} />
           <TaskList
             tasks={tasks}
             editTask={editTask}
