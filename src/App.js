@@ -35,7 +35,7 @@ function App() {
   }, [tasks]);
 
   const createNewDate = () => {
-    const date = new Date().toLocaleString({
+    const date = new Date().toLocaleString("en-ca", {
       year: "numeric",
       month: "short",
       day: "2-digit",
