@@ -1,11 +1,11 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { tasksReducer } from "./reducers/tasksReducer";
+import { createNewDate } from "./utils/date";
 import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
 import TaskFilter from "./components/TaskFilter";
 import ViewToggle from "./components/ViewToggle";
 import TaskList from "./components/TaskList";
-import { createNewDate } from "./utils/date.js";
 
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
