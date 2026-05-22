@@ -13,7 +13,10 @@ function ThemeToggle() {
 
   return (
     <div className="theme-toggle">
-      <button className="theme-toggle-button" onClick={toggleTheme}>
+      <button
+        title="Toggle Theme"
+        className="theme-toggle-button"
+        onClick={toggleTheme}>
         {theme === "dark" ? <FaMoon /> : <FaSun />}
       </button>
     </div>

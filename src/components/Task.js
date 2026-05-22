@@ -72,18 +72,20 @@ function Task(props) {
               value={editText}
               ref={textRef}
               name="editedTask"
-              rows={3}
+              // rows={3}
               onChange={(e) => setEditText(e.target.value)}></textarea>
-            <button title="Save Edit" className="save-edit" type="submit">
-              <FaCheck />
-            </button>
-            <button
-              title="Close Edit"
-              onClick={() => setEditing(false)}
-              className="close-edit"
-              type="button">
-              <FaX />
-            </button>
+            <div className="edit-form-actions">
+              <button title="Save Edit" className="save-edit" type="submit">
+                <FaCheck />
+              </button>
+              <button
+                title="Close Edit"
+                onClick={() => setEditing(false)}
+                className="close-edit"
+                type="button">
+                <FaX />
+              </button>
+            </div>
           </form>
         </>
       )}
