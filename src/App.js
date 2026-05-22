@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
 import TaskFilter from "./components/TaskFilter";
 import TaskList from "./components/TaskList";
+import ViewToggle from "./components/ViewToggle";
 
 const createNewDate = () => {
   const date = new Date().toLocaleString("en-ca", {
@@ -78,7 +79,11 @@ function App() {
       <main>
         <div className="container main-content">
           <CreateTask inputRef={inputRef} createTask={createTask} />
-          <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
+          <div className="filter-view-container">
+            <div className="invisible-element"></div>
+            <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
+            <ViewToggle />
+          </div>
           <TaskList
             tasks={displayedTasks}
             updateTask={updateTask}
