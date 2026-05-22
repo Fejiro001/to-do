@@ -13,6 +13,7 @@ function CreateTask(props) {
         type="text"
         placeholder="What needs to be done?"
         onChange={(e) => setEmpty(e.target.value.trim() === "")}
+        autoFocus
       />
       <button className="primary-button" type="submit" disabled={isEmpty}>
         <FaPlus />

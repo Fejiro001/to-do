@@ -1,35 +1,8 @@
 import { useEffect, useReducer, useRef } from "react";
-import CreateTask from "./components/CreateTask";
 import Header from "./components/Header";
+import CreateTask from "./components/CreateTask";
 import TaskList from "./components/TaskList";
-
-const tasksReducer = (tasks, action) => {
-  switch (action.type) {
-    case "CREATE":
-      return [...tasks, action.payload];
-    case "EDIT":
-      return tasks.map((task) => {
-        if (task.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return task;
-        }
-      });
-    case "COMPLETE":
-      return tasks.map((task) => {
-        if (task.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return task;
-        }
-      });
-    case "DELETE":
-      const updatedTask = tasks.filter((task) => task.id !== action.payload.id);
-      return updatedTask;
-    default:
-      return tasks;
-  }
-};
+import { tasksReducer } from "./reducers/tasksReducer";
 
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
