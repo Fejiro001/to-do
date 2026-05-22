@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  FaCircleCheck,
-  FaTrash,
-  FaPencil,
-  FaCheck,
-  FaX
-} from "react-icons/fa6";
+import { FaCircleCheck, FaTrash, FaPencil } from "react-icons/fa6";
 import DeleteModal from "./DeleteModal";
+import EditTask from "./EditTask";
 
 function Task(props) {
   const { task, updateTask, completeTask, deleteTask } = props;
@@ -18,21 +13,20 @@ function Task(props) {
   );
   const textRef = useRef(null);
 
-  const handleTextEdit = () => {
-    setEditText(task.text);
-    setEditing(true);
-  };
-
   // Focus on the textarea when editing is true
   useEffect(() => {
     if (isEditing && textRef.current) {
       textRef.current.focus();
-
       // Move the cursor to the end of the text
       const length = textRef.current.value.length;
       textRef.current.setSelectionRange(length, length);
     }
   }, [isEditing]);
+
+  const handleTextEdit = () => {
+    setEditText(task.text);
+    setEditing(true);
+  };
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -84,33 +78,14 @@ function Task(props) {
             </ul>
           </>
         ) : (
-          <>
-            <form
-              className="edit-task-form"
-              onSubmit={(e) => {
-                updateTask(e, { ...task, text: editText });
-                setEditing(false);
-              }}
-              onBlur={() => setEditing(false)}>
-              <textarea
-                value={editText}
-                ref={textRef}
-                name="editedTask"
-                onChange={(e) => setEditText(e.target.value)}></textarea>
-              <div className="edit-form-actions">
-                <button title="Save Edit" className="save-edit" type="submit">
-                  <FaCheck />
-                </button>
-                <button
-                  title="Close Edit"
-                  onClick={() => setEditing(false)}
-                  className="close-edit"
-                  type="button">
-                  <FaX />
-                </button>
-              </div>
-            </form>
-          </>
+          <EditTask
+            task={task}
+            editText={editText}
+            setEditText={setEditText}
+            updateTask={updateTask}
+            setEditing={setEditing}
+            textRef={textRef}
+          />
         )}
       </div>
     </>
