@@ -12,7 +12,8 @@ function DeleteModal(props) {
       {showModal && doNotShowAgain !== "true" && (
         <div className="modal-overlay">
           <div className="modal">
-            <h2>Are you sure you want to delete this task?</h2>
+            <h2>Delete task?</h2>
+            <p>This action cannot be undone.</p>
             <div className="confirmation-option">
               <input
                 type="checkbox"
@@ -27,7 +28,7 @@ function DeleteModal(props) {
                   );
                 }}
               />
-              <label htmlFor="do-not-show">Don't show this again</label>
+              <label htmlFor="do-not-show">Don't ask me again</label>
             </div>
             <div className="delete-actions">
               <button onClick={handleDelete} className="confirm-delete">

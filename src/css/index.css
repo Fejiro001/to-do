@@ -401,20 +401,28 @@ input[type="text"]::placeholder {
 
 .modal {
   background-color: var(--card-color);
-  padding: 2rem;
+  padding: 3rem 2rem;
   border-radius: var(--radius);
   border: 1px solid var(--border-color);
   width: 90%;
-  max-width: 60rem;
+  max-width: 40rem;
   text-align: center;
+
+  h2 {
+    font-size: var(--fs-md);
+  }
+
+  p {
+    font-size: var(--fs-base);
+    color: var(--muted-color);
+    margin-top: 1rem;
+  }
 }
 
 .confirmation-option {
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: var(--transition);
+  margin-block: 2.5rem 2rem;
+  color: var(--muted-color);
+  font-size: var(--fs-sm);
 
   input[type="checkbox"] {
     accent-color: var(--primary-color);
@@ -440,24 +448,24 @@ input[type="text"]::placeholder {
   border-radius: var(--radius);
   padding: 1rem 2rem;
   font-weight: 800;
+  font-size: var(--fs-sm);
   transition: var(--transition);
+  width: 100%;
 }
 
 .confirm-delete {
-  color: var(--error-color);
-  background-color: rgb(255, 69, 69, 0.1);
-  border: 1px solid var(--error-color);
+  background-color: rgb(146, 29, 29);
+  color: var(--white);
 }
 
 .confirm-delete:hover {
-  background-color: rgb(215, 28, 28);
-  color: var(--white);
+  background-color: rgb(104, 23, 23);
 }
 
 .cancel-delete {
   border: 1px solid var(--primary-color);
-  background-color: var(--primary-hover-color);
-  color: var(--primary-color);
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 .cancel-delete:hover {
