@@ -4,6 +4,17 @@ import CreateTask from "./components/CreateTask";
 import TaskList from "./components/TaskList";
 import { tasksReducer } from "./reducers/tasksReducer";
 
+const createNewDate = () => {
+  const date = new Date().toLocaleString("en-ca", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+  return date;
+};
+
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
   const [tasks, dispatch] = useReducer(tasksReducer, [], () => {
@@ -14,17 +25,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("my-tasks", JSON.stringify(tasks));
   }, [tasks]);
-
-  const createNewDate = () => {
-    const date = new Date().toLocaleString("en-ca", {
-      year: "numeric",
-      month: "short",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-    return date;
-  };
 
   const createTask = (e) => {
     e.preventDefault();
