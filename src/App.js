@@ -61,7 +61,8 @@ function App() {
     inputRef.current.value = "";
   };
 
-  const updateTask = (task) => {
+  const updateTask = (e, task) => {
+    e.preventDefault();
     const newDate = createNewDate();
     dispatch({ type: "EDIT", payload: { ...task, date: newDate } });
   };

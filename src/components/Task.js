@@ -10,10 +10,7 @@ import {
 function Task(props) {
   const { task, updateTask, completeTask, deleteTask } = props;
   const [isEditing, setEditing] = useState(false);
-
-  const editTask = () => {
-    setEditing(true);
-  };
+  const [editText, setEditText] = useState(task.text);
 
   return (
     <>
@@ -29,7 +26,7 @@ function Task(props) {
               </button>
             </li>
             <li title="Edit Task">
-              <button onClick={editTask} className="edit">
+              <button onClick={() => setEditing(true)} className="edit">
                 <FaPencil />
               </button>
             </li>
@@ -42,9 +39,19 @@ function Task(props) {
         </>
       ) : (
         <>
-          <form className="edit-task-form">
-            <input type="text" />
-            <button className="save-edit">
+          <form
+            className="edit-task-form"
+            onSubmit={(e) => {
+              updateTask(e, { ...task, text: editText });
+              setEditing(false);
+            }}>
+            <input
+              name="editedTask"
+              type="text"
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+            />
+            <button className="save-edit" type="submit">
               <FaCheck />
             </button>
             <button onClick={() => setEditing(false)} className="close-edit">
