@@ -2,7 +2,7 @@ import Task from "./Task";
 import { LuClipboardList } from "react-icons/lu";
 
 function TaskList(props) {
-  const { tasks, updateTask, completeTask, deleteTask, view } = props;
+  const { tasks, updateTask, completeTask, deleteTask, view, filter } = props;
 
   return (
     <section className="task-section">
@@ -22,8 +22,20 @@ function TaskList(props) {
       ) : (
         <div className="no-tasks">
           <LuClipboardList />
-          <p>No tasks yet</p>
-          <p>Add a task above to get started</p>
+          <p>
+            {filter === "ACTIVE"
+              ? "No active tasks"
+              : filter === "COMPLETED"
+                ? "No completed tasks"
+                : "No tasks"}
+          </p>
+          <p>
+            {filter === "ACTIVE"
+              ? "Add an active task above to get started"
+              : filter === "COMPLETED"
+                ? "Complete a task to see it here"
+                : "Add a task above to get started"}
+          </p>
         </div>
       )}
     </section>

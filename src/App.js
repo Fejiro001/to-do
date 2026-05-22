@@ -85,6 +85,7 @@ function App() {
             <ViewToggle view={view} setView={setView} />
           </div>
           <TaskList
+            filter={filter}
             view={view}
             tasks={displayedTasks}
             updateTask={updateTask}
@@ -98,3 +99,4 @@ function App() {
 }
 
 export default App;
+
