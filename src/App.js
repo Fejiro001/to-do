@@ -56,12 +56,13 @@ function App() {
 
   const pendingTasks = tasks.filter((task) => !task.isCompleted);
   const completedTasks = tasks.filter((task) => task.isCompleted);
-  const displayedTasks =
+  const baseTasks =
     filter === "ACTIVE"
       ? pendingTasks
       : filter === "COMPLETED"
         ? completedTasks
         : tasks;
+  const displayedTasks = [...baseTasks].reverse();
 
   return (
     <>
