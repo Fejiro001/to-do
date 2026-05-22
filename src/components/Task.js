@@ -35,7 +35,6 @@ function Task(props) {
   }, [isEditing]);
 
   const handleShowModal = () => {
-    console.log(doNotShowAgain);
     setShowModal(true);
   };
 

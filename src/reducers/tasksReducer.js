@@ -3,24 +3,15 @@ export const tasksReducer = (tasks, action) => {
     case "CREATE":
       return [...tasks, action.payload];
     case "EDIT":
-      return tasks.map((task) => {
-        if (task.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return task;
-        }
-      });
+      return tasks.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
     case "COMPLETE":
-      return tasks.map((task) => {
-        if (task.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return task;
-        }
-      });
+      return tasks.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
     case "DELETE":
-      const updatedTask = tasks.filter((task) => task.id !== action.payload.id);
-      return updatedTask;
+      return tasks.filter((task) => task.id !== action.payload.id);
     default:
       return tasks;
   }
