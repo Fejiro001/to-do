@@ -278,20 +278,21 @@ hr {
   color: var(--error-color);
 }
 
-.edit-task-form,
-.edit-form-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
 input[type="text"]:focus {
   outline: 1px solid var(--primary-color);
 }
 
 input[type="text"]::placeholder {
   color: var(--muted-color);
+}
+
+/* EDIT TASK FORM */
+.edit-task-form,
+.edit-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .edit-task-form .save-edit {

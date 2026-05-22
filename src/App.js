@@ -5,17 +5,7 @@ import CreateTask from "./components/CreateTask";
 import TaskFilter from "./components/TaskFilter";
 import ViewToggle from "./components/ViewToggle";
 import TaskList from "./components/TaskList";
-
-const createNewDate = () => {
-  const date = new Date().toLocaleString("en-ca", {
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-  return date;
-};
+import { createNewDate } from "./utils/date.js";
 
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
