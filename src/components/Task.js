@@ -35,7 +35,7 @@ function Task(props) {
               </button>
             </li>
             <li title="Delete Task">
-              <button className="delete">
+              <button onClick={() => deleteTask(task)} className="delete">
                 <FaTrash />
               </button>
             </li>

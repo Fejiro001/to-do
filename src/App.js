@@ -24,7 +24,8 @@ const tasksReducer = (tasks, action) => {
         }
       });
     case "DELETE":
-      return;
+      const updatedTask = tasks.filter((task) => task.id !== action.payload.id);
+      return updatedTask;
     default:
       return tasks;
   }
@@ -78,8 +79,8 @@ function App() {
     dispatch({ type: "COMPLETE", payload: task });
   };
 
-  const deleteTask = () => {
-    // TODO: Implement delete task functionality
+  const deleteTask = (task) => {
+    dispatch({ type: "DELETE", payload: task });
   };
 
   return (
