@@ -9,7 +9,7 @@ function TaskList(props) {
       {tasks.length > 0 ? (
         <ul className="task-list">
           {tasks.map((task) => (
-            <li key={task.id} className="task-list-item">
+            <li key={task.id}>
               <Task
                 task={task}
                 updateTask={updateTask}
