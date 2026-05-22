@@ -198,7 +198,8 @@ hr {
 }
 
 .task-actions li button.complete:hover,
-.edit-task-form .save-edit:hover {
+.edit-task-form .save-edit:hover,
+.complete.task-completed {
   background-color: rgb(34, 197, 94, 0.15);
   color: rgb(34, 197, 94);
 }

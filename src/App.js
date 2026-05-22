@@ -11,11 +11,18 @@ const tasksReducer = (tasks, action) => {
       return tasks.map((task) => {
         if (task.id === action.payload.id) {
           return action.payload;
+        } else {
+          return task;
         }
-        return task;
       });
     case "COMPLETE":
-      return;
+      return tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return task;
+        }
+      });
     case "DELETE":
       return;
     default:
@@ -68,7 +75,7 @@ function App() {
   };
 
   const completeTask = (task) => {
-    // TODO: Implement complete task functionality
+    dispatch({ type: "COMPLETE", payload: task });
   };
 
   const deleteTask = () => {

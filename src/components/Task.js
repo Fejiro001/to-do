@@ -21,7 +21,11 @@ function Task(props) {
           <hr />
           <ul className="task-actions">
             <li title="Complete Task">
-              <button className="complete">
+              <button
+                onClick={() =>
+                  completeTask({ ...task, isCompleted: !task.isCompleted })
+                }
+                className={`complete ${task.isCompleted ? "task-completed" : ""}`}>
                 <FaCircleCheck />
               </button>
             </li>
