@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { FaCircleCheck, FaTrash, FaPencil, FaCheck, FaX } from "react-icons/fa6";
+import {
+  FaCircleCheck,
+  FaTrash,
+  FaPencil,
+  FaCheck,
+  FaX
+} from "react-icons/fa6";
 
 function Task(props) {
   const { task, updateTask, completeTask, deleteTask } = props;
@@ -24,7 +30,8 @@ function Task(props) {
   }, [isEditing]);
 
   return (
-    <div className="task-list-item">
+    <div
+      className={`task-list-item ${task.isCompleted ? "task-completed" : ""}`}>
       {!isEditing ? (
         <>
           <h2 className="task-title">{task.text}</h2>
@@ -36,7 +43,7 @@ function Task(props) {
                 onClick={() =>
                   completeTask({ ...task, isCompleted: !task.isCompleted })
                 }
-                className={`complete ${task.isCompleted ? "task-completed" : ""}`}>
+                className="complete">
                 <FaCircleCheck />
               </button>
             </li>
