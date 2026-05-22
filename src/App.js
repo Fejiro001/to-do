@@ -61,7 +61,7 @@ function App() {
     inputRef.current.value = "";
   };
 
-  const editTask = (task) => {
+  const updateTask = (task) => {
     const newDate = createNewDate();
     dispatch({ type: "EDIT", payload: { ...task, date: newDate } });
   };
@@ -82,7 +82,7 @@ function App() {
           <CreateTask inputRef={inputRef} createTask={createTask} />
           <TaskList
             tasks={tasks}
-            editTask={editTask}
+            updateTask={updateTask}
             completeTask={completeTask}
             deleteTask={deleteTask}
           />

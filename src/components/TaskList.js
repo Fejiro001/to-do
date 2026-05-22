@@ -2,7 +2,7 @@ import Task from "./Task";
 import { LuClipboardList } from "react-icons/lu";
 
 function TaskList(props) {
-  const { tasks, editTask, completeTask, deleteTask } = props;
+  const { tasks, updateTask, completeTask, deleteTask } = props;
 
   return (
     <section className="task-section">
@@ -12,7 +12,7 @@ function TaskList(props) {
             <li key={task.id} className="task-list-item">
               <Task
                 task={task}
-                editTask={editTask}
+                updateTask={updateTask}
                 completeTask={completeTask}
                 deleteTask={deleteTask}
               />
