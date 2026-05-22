@@ -3,7 +3,10 @@
 :root {
   /* Colors */
   --primary-color: #7c3bed;
+  --primary-hover-color: rgb(124, 59, 237, 0.3);
   --secondary-color: #0f0e15;
+  --accent-color: #be98ff;
+  --text-color: #ffffff;
   --card-color: #1d192c;
   --muted-color: #8a84a4;
   --border-color: #3d384c;
@@ -35,6 +38,16 @@
   --transition: all 0.3s ease;
 }
 
+.light {
+  --primary-hover-color: rgb(124, 59, 237, 0.1);
+  --secondary-color: #f9f9fb;
+  --accent-color: #7c3bed;
+  --text-color: #0f0e15;
+  --card-color: #ffffff;
+  --muted-color: #8a84a4;
+  --border-color: #c7c1e1;
+}
+
 .container {
   max-width: min(100% - 30px, var(--max-width));
   margin-inline: auto;
@@ -59,23 +72,34 @@ li {
 
 body {
   background-color: var(--secondary-color);
-  color: var(--white);
+  color: var(--text-color);
 }
 
 /* HEADER */
 header {
+  background-color: var(--secondary-color);
   border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
-.header-container {
+.header-container,
+.header-left,
+.task-count {
+  display: flex;
+  align-items: center;
+}
+
+.header-container,
+.header-left {
   height: 8rem;
   gap: 1.5rem;
 }
 
-.header-container,
-.task-count {
-  display: flex;
-  align-items: center;
+.header-container {
+  justify-content: space-between;
 }
 
 .logo-image {
@@ -95,6 +119,30 @@ header {
 
 .dot-icon {
   font-size: 0.8rem;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle-button {
+  background-color: transparent;
+  color: var(--muted-color);
+  font-size: var(--fs-md);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  transition: var(--transition);
+}
+
+.theme-toggle-button:hover {
+  transform: rotate(180deg);
 }
 
 .main-content {
@@ -117,7 +165,7 @@ header {
 .create-task-form input {
   flex: 1;
   background-color: var(--card-color);
-  color: var(--white);
+  color: var(--text-color);
   border: 1px solid var(--border-color);
   font-size: var(--fs-base);
 }
@@ -137,6 +185,7 @@ header {
   gap: 1rem;
   font-weight: 600;
   font-size: var(--fs-sm);
+  font-weight: 800;
   text-transform: uppercase;
   transition: var(--transition);
 }
@@ -172,13 +221,14 @@ header {
   padding: 1.5rem;
   border-radius: var(--radius);
   transition: var(--transition);
-  border-left: 5px solid var(--primary-color);
   height: fit-content;
   min-height: 135px;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--primary-color);
 }
 
 .task-list-item.task-completed {
-  border-color: var(--success-color);
+  border-left-color: var(--success-color);
 
   h2 {
     text-decoration: line-through;
@@ -233,8 +283,8 @@ hr {
 
 .task-actions li button.edit:hover,
 .edit-task-form .close-edit:hover {
-  background-color: rgb(124, 59, 237, 0.3);
-  color: rgb(190, 152, 255);
+  background-color: var(--primary-hover-color);
+  color: var(--accent-color);
 }
 
 .task-actions li button.delete:hover {
@@ -268,7 +318,7 @@ input[type="text"]::placeholder {
 .edit-task-form textarea {
   flex: 1;
   background-color: transparent;
-  color: var(--white);
+  color: var(--text-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   font-size: var(--fs-base);
@@ -342,8 +392,8 @@ input[type="text"]::placeholder {
 
 .task-filter button:hover,
 .view-toggle button:hover {
-  background-color: rgb(124, 59, 237, 0.3);
-  color: rgb(190, 152, 255);
+  background-color: var(--primary-hover-color);
+  color: var(--accent-color);
 }
 
 .task-filter button.active,
@@ -354,14 +404,14 @@ input[type="text"]::placeholder {
 
 /* Tablet */
 @media (max-width: 1023px) {
-  .task-list {
+  .task-list.grid-view {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
-  .task-list {
+  .task-list.grid-view {
     grid-template-columns: 1fr;
   }
 }
