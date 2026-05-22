@@ -1,3 +1,4 @@
+import { FaCircle } from "react-icons/fa6";
 import logo from "../media/logo.svg";
 
 function Header(props) {
@@ -15,7 +16,7 @@ function Header(props) {
           <h1 className="app-title">My Tasks</h1>
           <div className="task-count">
             <p>{pendingTasks.length || 0} pending</p>
-            <span>•</span>
+            <FaCircle className="dot-icon" />
             <p>{completedTasks.length || 0} done</p>
           </div>
         </div>

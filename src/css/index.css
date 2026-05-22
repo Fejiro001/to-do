@@ -5,7 +5,7 @@
   --primary-color: #7c3bed;
   --secondary-color: #0f0e15;
   --card-color: #1d192c;
-  --muted-color: #87839a;
+  --muted-color: #8a84a4;
   --border-color: #3d384c;
   --white: #ffffff;
   --black: #000000;
@@ -87,10 +87,14 @@ header {
 }
 
 .task-count {
-  gap: 0.5rem;
+  gap: 0.8rem;
   font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--muted-color);
+}
+
+.dot-icon {
+  font-size: 0.8rem;
 }
 
 .main-content {
