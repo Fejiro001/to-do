@@ -45,12 +45,12 @@ function Task(props) {
               updateTask(e, { ...task, text: editText });
               setEditing(false);
             }}>
-            <input
+            <textarea
               name="editedTask"
-              type="text"
-              value={editText}
-              onChange={(e) => setEditText(e.target.value)}
-            />
+              rows={3}
+              onChange={(e) => setEditText(e.target.value)}>
+              {editText}
+            </textarea>
             <button className="save-edit" type="submit">
               <FaCheck />
             </button>

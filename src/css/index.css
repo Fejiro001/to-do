@@ -233,7 +233,7 @@ input[type="text"]:focus {
   color: var(--primary-color);
 }
 
-.edit-task-form input {
+.edit-task-form textarea {
   flex: 1;
   background-color: transparent;
   color: var(--white);
@@ -241,6 +241,8 @@ input[type="text"]:focus {
   border-radius: var(--radius);
   font-size: var(--fs-base);
   padding: 0.8rem 1rem;
+  resize: vertical;
+  scrollbar-width: none;
 }
 
 /* NO TASKS */
