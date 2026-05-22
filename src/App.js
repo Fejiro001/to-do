@@ -1,8 +1,9 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
+import { tasksReducer } from "./reducers/tasksReducer";
 import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
+import TaskFilter from "./components/TaskFilter";
 import TaskList from "./components/TaskList";
-import { tasksReducer } from "./reducers/tasksReducer";
 
 const createNewDate = () => {
   const date = new Date().toLocaleString("en-ca", {
@@ -17,6 +18,7 @@ const createNewDate = () => {
 
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
+  const [filter, setFilter] = useState("ALL");
   const [tasks, dispatch] = useReducer(tasksReducer, [], () => {
     return localTasks;
   });
@@ -56,14 +58,29 @@ function App() {
     dispatch({ type: "DELETE", payload: task });
   };
 
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
+  const pendingTasks = tasks.filter((task) => !task.isCompleted);
+  const completedTasks = tasks.filter((task) => task.isCompleted);
+
+  const displayedTasks =
+    filter === "ACTIVE"
+      ? pendingTasks
+      : filter === "COMPLETED"
+        ? completedTasks
+        : tasks;
+
   return (
     <>
-      <Header />
+      <Header pendingTasks={pendingTasks} completedTasks={completedTasks} />
       <main>
         <div className="container main-content">
           <CreateTask inputRef={inputRef} createTask={createTask} />
+          <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
           <TaskList
-            tasks={tasks}
+            tasks={displayedTasks}
             updateTask={updateTask}
             completeTask={completeTask}
             deleteTask={deleteTask}

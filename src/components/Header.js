@@ -1,6 +1,8 @@
 import logo from "../media/logo.svg";
 
-function Header() {
+function Header(props) {
+  const { pendingTasks, completedTasks } = props;
+
   return (
     <header>
       <div className="container header-container">
@@ -12,9 +14,9 @@ function Header() {
         <div className="header-content">
           <h1 className="app-title">My Tasks</h1>
           <div className="task-count">
-            <p>10 pending</p>
+            <p>{pendingTasks.length || 0} pending</p>
             <span>•</span>
-            <p>5 done</p>
+            <p>{completedTasks.length || 0} done</p>
           </div>
         </div>
       </div>

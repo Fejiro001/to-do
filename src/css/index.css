@@ -284,6 +284,37 @@ input[type="text"]:focus {
   font-size: var(--fs-base);
 }
 
+/* TASK FILTER */
+.task-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--card-color);
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.task-filter button {
+  background-color: transparent;
+  color: var(--muted-color);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.task-filter button:hover {
+  background-color: rgb(124, 59, 237, 0.3);
+  color: rgb(190, 152, 255);
+}
+
+.task-filter button.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
 /* Tablet */
 @media (max-width: 1023px) {
   .task-list {
