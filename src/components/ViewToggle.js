@@ -1,16 +1,22 @@
 import { FaList } from "react-icons/fa6";
 import { BsFillGridFill } from "react-icons/bs";
 
-function ViewToggle() {
+function ViewToggle(props) {
+  const { view, setView } = props;
+
   return (
     <ul className="view-toggle">
       <li>
-        <button className="active">
+        <button
+          className={view === "grid" ? "active" : ""}
+          onClick={() => setView("grid")}>
           <BsFillGridFill />
         </button>
       </li>
       <li>
-        <button>
+        <button
+          className={view === "list" ? "active" : ""}
+          onClick={() => setView("list")}>
           <FaList />
         </button>
       </li>

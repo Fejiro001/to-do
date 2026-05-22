@@ -3,8 +3,8 @@ import { tasksReducer } from "./reducers/tasksReducer";
 import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
 import TaskFilter from "./components/TaskFilter";
-import TaskList from "./components/TaskList";
 import ViewToggle from "./components/ViewToggle";
+import TaskList from "./components/TaskList";
 
 const createNewDate = () => {
   const date = new Date().toLocaleString("en-ca", {
@@ -20,6 +20,7 @@ const createNewDate = () => {
 function App() {
   const localTasks = JSON.parse(localStorage.getItem("my-tasks")) ?? [];
   const [filter, setFilter] = useState("ALL");
+  const [view, setView] = useState("grid");
   const [tasks, dispatch] = useReducer(tasksReducer, [], () => {
     return localTasks;
   });
@@ -65,7 +66,6 @@ function App() {
 
   const pendingTasks = tasks.filter((task) => !task.isCompleted);
   const completedTasks = tasks.filter((task) => task.isCompleted);
-
   const displayedTasks =
     filter === "ACTIVE"
       ? pendingTasks
@@ -82,9 +82,10 @@ function App() {
           <div className="filter-view-container">
             <div className="invisible-element"></div>
             <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
-            <ViewToggle />
+            <ViewToggle view={view} setView={setView} />
           </div>
           <TaskList
+            view={view}
             tasks={displayedTasks}
             updateTask={updateTask}
             completeTask={completeTask}
@@ -97,4 +98,3 @@ function App() {
 }
 
 export default App;
-

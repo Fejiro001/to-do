@@ -5,7 +5,7 @@
   --primary-color: #7c3bed;
   --secondary-color: #0f0e15;
   --card-color: #1d192c;
-  --muted-color: #6b677e;
+  --muted-color: #87839a;
   --border-color: #3d384c;
   --white: #ffffff;
   --black: #000000;
@@ -151,9 +151,15 @@ header {
   width: 100%;
 }
 
-.task-list {
+.task-list.grid-view {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.task-list.list-view {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -164,6 +170,7 @@ header {
   transition: var(--transition);
   border-left: 5px solid var(--primary-color);
   height: fit-content;
+  min-height: 135px;
 }
 
 .task-list-item.task-completed {
@@ -240,6 +247,10 @@ hr {
 
 input[type="text"]:focus {
   outline: 1px solid var(--primary-color);
+}
+
+input[type="text"]::placeholder {
+  color: var(--muted-color);
 }
 
 .edit-task-form .save-edit {

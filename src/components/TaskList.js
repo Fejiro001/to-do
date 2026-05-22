@@ -2,12 +2,12 @@ import Task from "./Task";
 import { LuClipboardList } from "react-icons/lu";
 
 function TaskList(props) {
-  const { tasks, updateTask, completeTask, deleteTask } = props;
+  const { tasks, updateTask, completeTask, deleteTask, view } = props;
 
   return (
     <section className="task-section">
       {tasks.length > 0 ? (
-        <ul className="task-list">
+        <ul className={`task-list ${view}-view`}>
           {tasks.map((task) => (
             <li key={task.id}>
               <Task
