@@ -33,10 +33,14 @@ function Task(props) {
 
     if (skipConfirm) {
       deleteTask(task);
-      setShowModal(false);
     } else {
       setShowModal(true);
     }
+  };
+
+  const confirmDelete = () => {
+    deleteTask(task);
+    setShowModal(false);
   };
 
   return (
@@ -46,7 +50,7 @@ function Task(props) {
         setShowModal={setShowModal}
         doNotShowAgain={doNotShowAgain}
         setDoNotShowAgain={setDoNotShowAgain}
-        handleDelete={handleDelete}
+        confirmDelete={confirmDelete}
       />
       <div
         className={`task-list-item ${task.isCompleted ? "task-completed" : ""}`}>
@@ -71,9 +75,7 @@ function Task(props) {
                 </button>
               </li>
               <li title="Delete Task">
-                <button
-                  onClick={handleDelete}
-                  className="delete">
+                <button onClick={handleDelete} className="delete">
                   <FaTrash />
                 </button>
               </li>

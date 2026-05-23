@@ -2,7 +2,7 @@ function DeleteModal(props) {
   const {
     showModal,
     setShowModal,
-    handleDelete,
+    confirmDelete,
     doNotShowAgain,
     setDoNotShowAgain
   } = props;
@@ -28,7 +28,7 @@ function DeleteModal(props) {
               <label htmlFor="do-not-show">Don't ask me again</label>
             </div>
             <div className="delete-actions">
-              <button onClick={handleDelete} className="confirm-delete">
+              <button onClick={confirmDelete} className="confirm-delete">
                 Yes, Delete
               </button>
               <button
