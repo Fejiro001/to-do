@@ -262,7 +262,7 @@ hr {
 }
 
 .task-actions li button.complete:hover,
-.edit-task-form .save-edit:hover {
+.edit-task-form .save-edit:not(:disabled):hover {
   background-color: rgb(34, 197, 94, 0.15);
   color: var(--success-color);
 }
@@ -297,6 +297,12 @@ input[type="text"]::placeholder {
 
 .edit-task-form .save-edit {
   color: var(--success-color);
+}
+
+.edit-task-form .save-edit:disabled {
+  background-color: rgba(123, 123, 123, 0.15);
+  color: var(--muted-color);
+  cursor: not-allowed;
 }
 
 .edit-task-form .close-edit {

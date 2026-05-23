@@ -17,7 +17,7 @@ function EditTask(props) {
         name="editedTask"
         onChange={(e) => setEditText(e.target.value)}></textarea>
       <div className="edit-form-actions">
-        <button title="Save Edit" className="save-edit" type="submit">
+        <button title="Save Edit" className="save-edit" type="submit" disabled={editText.trim() === ""}>
           <FaCheck />
         </button>
         <button
