@@ -7,6 +7,11 @@ function DeleteModal(props) {
     setDoNotShowAgain
   } = props;
 
+  const handleChange = (e) => {
+    setDoNotShowAgain(e.target.checked);
+    sessionStorage.setItem("doNotShowModal", e.target.checked);
+  };
+
   return (
     <>
       {showModal && (
@@ -20,10 +25,7 @@ function DeleteModal(props) {
                 id="do-not-show"
                 name="do-not-show"
                 checked={doNotShowAgain}
-                onChange={(e) => {
-                  setDoNotShowAgain(e.target.checked);
-                  sessionStorage.setItem("doNotShowModal", e.target.checked);
-                }}
+                onChange={handleChange}
               />
               <label htmlFor="do-not-show">Don't ask me again</label>
             </div>
