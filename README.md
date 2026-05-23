@@ -6,12 +6,13 @@
 
 **My Tasks** is a responsive task management application built with React. The application allows users to create, edit, complete, delete, and filter tasks through a clean and modern user interface.
 
-The project was developed as part of a React front-end assignment and focuses on state management using the `useReducer` hook, reusable component architecture, local storage persistence, and interactive user experiences.
+The project was developed as part of a React front-end assignment and focuses on state management using the `useReducer` and `useState` hooks, side effects using `useEffect`, DOM manipulation using `useRef`, reusable component architecture, local storage persistence, and interactive user experiences.
 
 ## Features
 
 - Create, edit, complete, and delete tasks
 - Task filtering system (All, Active, Completed)
+- Most recent tasks displayed at the top
 - Persistent task, theme storage using `localStorage`
 - Persistent delete confirmation using `sessionStorage`
 - Dynamic task statistics (pending and completed tasks)

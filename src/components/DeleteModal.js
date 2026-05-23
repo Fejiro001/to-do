@@ -9,7 +9,7 @@ function DeleteModal(props) {
 
   return (
     <>
-      {showModal && doNotShowAgain !== "true" && (
+      {showModal && (
         <div className="modal-overlay">
           <div className="modal">
             <h2>Delete task?</h2>
@@ -22,10 +22,7 @@ function DeleteModal(props) {
                 checked={doNotShowAgain}
                 onChange={(e) => {
                   setDoNotShowAgain(e.target.checked);
-                  sessionStorage.setItem(
-                    "doNotShowModal",
-                    e.target.checked.toString()
-                  );
+                  sessionStorage.setItem("doNotShowModal", e.target.checked);
                 }}
               />
               <label htmlFor="do-not-show">Don't ask me again</label>

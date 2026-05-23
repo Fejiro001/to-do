@@ -28,13 +28,15 @@ function Task(props) {
     setEditing(true);
   };
 
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
-
   const handleDelete = () => {
-    deleteTask(task);
-    setShowModal(false);
+    const skipConfirm = sessionStorage.getItem("doNotShowModal") === "true";
+
+    if (skipConfirm) {
+      deleteTask(task);
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
   };
 
   return (
@@ -70,7 +72,7 @@ function Task(props) {
               </li>
               <li title="Delete Task">
                 <button
-                  onClick={doNotShowAgain ? handleDelete : handleShowModal}
+                  onClick={handleDelete}
                   className="delete">
                   <FaTrash />
                 </button>
