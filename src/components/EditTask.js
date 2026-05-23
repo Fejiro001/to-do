@@ -1,8 +1,7 @@
 import { FaCheck, FaX } from "react-icons/fa6";
 
 function EditTask(props) {
-  const { task, editText, setEditText, updateTask, setEditing, textRef } =
-    props;
+  const { task, editText, setEditText, updateTask, setEditing, textRef } = props;
 
   return (
     <form
@@ -17,7 +16,11 @@ function EditTask(props) {
         name="editedTask"
         onChange={(e) => setEditText(e.target.value)}></textarea>
       <div className="edit-form-actions">
-        <button title="Save Edit" className="save-edit" type="submit" disabled={editText.trim() === ""}>
+        <button
+          title="Save Edit"
+          className="save-edit"
+          type="submit"
+          disabled={editText.trim() === ""}>
           <FaCheck />
         </button>
         <button
